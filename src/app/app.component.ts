@@ -30,6 +30,8 @@ export class AppComponent {
     this.userData.subscription = this.userForm.value.subscription;
     this.userData.password = this.userForm.value.password;
 
+    console.log(this.userData);
+
     this.userForm.reset();
   }
 }
