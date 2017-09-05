@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  NgForm
+} from '@angular/forms';
+import {
+  Component,
+  ViewChild
+} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +13,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  @ViewChild('f') userForm: NgForm;
+
+  subscriptions: string[] = ['Basic', 'Advanced', 'Pro'];
+  defaultSubscription = 'Advanced';
+  userData = {
+    email: '',
+    subscription: '',
+    password: ''
+  };
+
+  constructor() {}
+
+  onSubmit() {
+    this.userData.email = this.userForm.value.email;
+    this.userData.subscription = this.userForm.value.subscription;
+    this.userData.password = this.userForm.value.password;
+
+    this.userForm.reset();
+  }
 }
